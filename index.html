@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&family=Balsamiq+Sans&family=Kaushan+Script&family=Roboto:wght@700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <title>ROLL THE DICE </title>
+    <style>
+        .fd{
+            width:100%;
+            display:flex;
+            text-align: center;
+            align-items: center;
+            color:rgb(5, 33, 58);
+            font-size: 40px;
+            padding-left: 350px;
+            font-family: 'Kaushan Script', cursive;
+            font-weight: bold;
+
+        }
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        
+        body
+        {
+            height:100vh;
+            background:linear-gradient(red,rgb(233, 92, 73)) 0 100% no-repeat;
+            background-size:100% 50% ;
+        }
+        .container{
+            width:800px;
+            padding: 50px;
+            border:1px solid black;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top:50%;
+            left:50%;
+            background-color: aliceblue;
+            box-shadow: 0 15px 35px ;
+            border-color:black;
+            border-radius: 9px;
+            display: flex;
+            flex-direction: column;
+            font-family: "Poppins",sans-serif;
+        }
+        .dice-wrapper{
+            width:97%;
+            display: flex;
+            justify-content: space-around;
+        }
+        #total{
+            
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            left:50%;
+            margin:20px 40px;
+            padding-top: 25px;
+            font-size: 25px;
+            font-family: "Poppins",sans-serif;
+            font-weight: bold;
+
+            
+
+        }
+        .dem{
+            display: flex;
+            align-items: center;
+            padding-left: 240px;
+            padding-top: 28px;
+            left:50%;
+        }
+        #but{
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left:250%;
+            background-color: rgb(218, 71, 71);
+            cursor: pointer;
+            font-size: 23px;
+            font-family: "Poppins",sans-serif;
+            font-weight: bold;
+            border-color: rgb(126, 8, 8);
+            height: 58px;
+            border-radius: 15px;
+            letter-spacing: 1px;
+            box-shadow: 0 15px 35px;
+        }
+        #but:hover{
+            
+            background-color: blueviolet;
+            color:rgb(245, 222, 222);
+            border-color: black;
+            box-shadow: 0 10px 35px ;
+
+        }
+        .shake{
+            animation:shake 0.5s infinite;
+        }
+        @keyframes shake{
+            0%{
+                transform: rotate(8deg);
+            }
+            50%{
+                transform: rotate(-8deg);
+            }
+            100%{
+                transform: rotate(8deg);
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="fd">
+        <h1> LUCK GAME :   <span class="autotype"></span></h1>
+
+    </div>
+    <div class="container">
+        <div class="dice-wrapper">
+            <img src="1.png" id="die-1">
+            <img src="2.png" id="die-2">
+          
+        </div>
+        <p id="total">MADE BY:SHUBHAM</p>
+        <div class="dem">
+            <button id="but" onclick="roll()">ROLL NOW</button>
+        </div>
+
+    </div>
+    
+</body>
+
+  
+
+<script>
+    var typed = new Typed(".autotype",{ strings:["ENJOY YOUR WAY","YOU WIN OR LOOSE","NO WAY BUT TO CHOOSE"],
+       typeSpeed:250,
+       backSpeed:250,
+       loop:true
+
+       })
+
+    </script>
+    <script>
+    let images=["1.png","2.png","3.png","4.png","5.png","6.png"];
+    let dice = document.querySelectorAll("img");
+
+    function roll(){
+        dice.forEach(function(die){
+            die.classList.add("shake");
+        });
+        setTimeout(function(){
+            dice.forEach(function(die){
+                die.classList.remove("shake");
+            });
+            let dieone = Math.floor(Math.random()*6);
+            let dietwo = Math.floor(Math.random()*6);
+            console.log(dieone,dietwo);
+            document.querySelector("#die-1").setAttribute("src",images[dieone]);
+            document.querySelector("#die-2").setAttribute("src",images[dietwo]);
+            document.querySelector("#total").innerHTML="YOUR ROLL IS   "+((dieone+1)+(dietwo+1));
+
+
+        },
+        1000
+        )
+        
+}
+   </script>
+
+</html>
